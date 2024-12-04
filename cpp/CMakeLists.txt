@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 if(WIN32)
   add_compile_options(/W3 /WX)
 else()
-  add_compile_options(-Wall -Wextra -pedantic)
+  add_compile_options(-Wall -Wextra -pedantic -O3)
 endif()
 
 find_program(CCACHE_PROGRAM ccache)
@@ -20,5 +20,8 @@ target_link_libraries(petsird_generator petsird_generated)
 
 add_executable(petsird_analysis petsird_analysis.cpp)
 target_link_libraries(petsird_analysis petsird_generated)
+
+add_executable(petsird_castor_converter petsird_castor_converter.cpp)
+target_link_libraries(petsird_castor_converter petsird_generated)
 
 add_subdirectory(generated)
